@@ -1,0 +1,36 @@
+{
+  "@@locale": "tr",
+  "appTitle": "Gürler Soba",
+  "navHome": "Ana Sayfa",
+  "navContact": "İletişim",
+  "navCategories": "Kategoriler",
+
+  "privacyTitle": "Gizlilik Politikası",
+  "cookieTitle": "Çerez Politikası",
+
+  "heroTitle": "Döküm Soba & Şömine",
+  "heroSubtitle": "Minimal tasarım, güçlü ısıtma. Ürünleri inceleyin ve WhatsApp’tan teklif isteyin.",
+
+  "sectionCategories": "Kategoriler",
+  "sectionFeatured": "Öne Çıkan Ürünler",
+  "sectionFreeSurvey": "Ücretsiz keşif / teklif",
+
+  "ctaDetails": "Detay",
+  "ctaWhatsApp": "WhatsApp’tan Sipariş/ Teklif İste",
+  "ctaCall": "Ara",
+  "ctaGetQuote": "Teklif Al",
+
+  "formName": "Ad Soyad",
+  "formPhone": "Telefon",
+  "formEmail": "E-posta (opsiyonel)",
+  "formCity": "Şehir/İlçe (opsiyonel)",
+  "formMessage": "Mesaj (opsiyonel)",
+  "formSubmit": "Gönder",
+
+  "validationRequired": "Bu alan zorunludur.",
+  "validationPhone": "Lütfen geçerli bir telefon numarası girin.",
+
+  "emptyProducts": "Bu kategoride henüz yayınlanmış ürün yok.",
+  "notFound": "İçerik bulunamadı.",
+  "loading": "Yükleniyor…"
+}
