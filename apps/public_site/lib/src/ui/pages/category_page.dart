@@ -7,6 +7,7 @@ import 'package:public_site/l10n/app_localizations.dart';
 import '../../data/providers.dart';
 import '../widgets/product_card.dart';
 import '../widgets/section_header.dart';
+import '../widgets/site_footer.dart';
 
 typedef L10n = AppLocalizations;
 
@@ -114,18 +115,24 @@ class _CategoryBody extends ConsumerWidget {
                               final cardWidth = (w - gap * (columns - 1)) / columns;
 
                               return SingleChildScrollView(
-                                child: Wrap(
-                                  spacing: gap,
-                                  runSpacing: gap,
+                                child: Column(
                                   children: [
-                                    for (final p in products)
-                                      SizedBox(
-                                        width: cardWidth,
-                                        child: ProductCard(
-                                          product: p,
-                                          categoryName: category.name,
-                                        ),
-                                      ),
+                                    Wrap(
+                                      spacing: gap,
+                                      runSpacing: gap,
+                                      children: [
+                                        for (final p in products)
+                                          SizedBox(
+                                            width: cardWidth,
+                                            child: ProductCard(
+                                              product: p,
+                                              categoryName: category.name,
+                                            ),
+                                          ),
+                                      ],
+                                    ),
+                                    const SizedBox(height: 28),
+                                    const SiteFooter(),
                                   ],
                                 ),
                               );

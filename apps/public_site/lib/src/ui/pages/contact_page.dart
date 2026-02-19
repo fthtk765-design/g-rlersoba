@@ -6,6 +6,7 @@ import 'package:url_launcher/url_launcher.dart';
 import 'package:public_site/l10n/app_localizations.dart';
 
 import '../../data/providers.dart';
+import '../widgets/site_footer.dart';
 
 typedef L10n = AppLocalizations;
 
@@ -28,68 +29,72 @@ class ContactPage extends ConsumerWidget {
     final phoneAsync = ref.watch(whatsappPhoneProvider);
     const whatsappGreen = Color(0xFF25D366);
 
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 24),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Text(l10n.navContact, style: Theme.of(context).textTheme.headlineMedium),
-          const SizedBox(height: 12),
-          Text(
-            'Bize WhatsApp üzerinden yazabilir veya arayabilirsiniz.',
-            style: Theme.of(context).textTheme.bodyLarge,
-          ),
-          const SizedBox(height: 16),
-          phoneAsync.when(
-            data: (phone) {
-              final display = _formatPhoneDisplay(phone);
-              return Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text('Telefon: $display', style: Theme.of(context).textTheme.bodyLarge),
-                  const SizedBox(height: 8),
-                  Text('Adres: $_address', style: Theme.of(context).textTheme.bodyLarge),
-                ],
-              );
-            },
-            loading: () => Text('Adres: $_address', style: Theme.of(context).textTheme.bodyLarge),
-            error: (error, stackTrace) => Text('Adres: $_address', style: Theme.of(context).textTheme.bodyLarge),
-          ),
-          const SizedBox(height: 24),
-          phoneAsync.when(
-            data: (phone) {
-              final tel = '+${phone.replaceAll(RegExp(r'[^0-9]'), '')}';
-              return Wrap(
-                spacing: 12,
-                runSpacing: 12,
-                children: [
-                  FilledButton.icon(
-                    onPressed: () => launchUrl(Uri.parse('tel:$tel'), mode: LaunchMode.platformDefault),
-                    icon: const Icon(Icons.call),
-                    label: Text(l10n.ctaCall),
-                  ),
-                  FilledButton.icon(
-                    style: FilledButton.styleFrom(
-                      backgroundColor: whatsappGreen,
-                      foregroundColor: Colors.white,
+    return SingleChildScrollView(
+      child: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 24),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(l10n.navContact, style: Theme.of(context).textTheme.headlineMedium),
+            const SizedBox(height: 12),
+            Text(
+              'Bize WhatsApp üzerinden yazabilir veya arayabilirsiniz.',
+              style: Theme.of(context).textTheme.bodyLarge,
+            ),
+            const SizedBox(height: 16),
+            phoneAsync.when(
+              data: (phone) {
+                final display = _formatPhoneDisplay(phone);
+                return Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text('Telefon: $display', style: Theme.of(context).textTheme.bodyLarge),
+                    const SizedBox(height: 8),
+                    Text('Adres: $_address', style: Theme.of(context).textTheme.bodyLarge),
+                  ],
+                );
+              },
+              loading: () => Text('Adres: $_address', style: Theme.of(context).textTheme.bodyLarge),
+              error: (error, stackTrace) => Text('Adres: $_address', style: Theme.of(context).textTheme.bodyLarge),
+            ),
+            const SizedBox(height: 24),
+            phoneAsync.when(
+              data: (phone) {
+                final tel = '+${phone.replaceAll(RegExp(r'[^0-9]'), '')}';
+                return Wrap(
+                  spacing: 12,
+                  runSpacing: 12,
+                  children: [
+                    FilledButton.icon(
+                      onPressed: () => launchUrl(Uri.parse('tel:$tel'), mode: LaunchMode.platformDefault),
+                      icon: const Icon(Icons.call),
+                      label: Text(l10n.ctaCall),
                     ),
-                    onPressed: () {
-                      final url = buildWhatsAppUrl(
-                        phoneE164Digits: phone,
-                        message: 'Merhaba, bilgi almak istiyorum.',
-                      );
-                      launchUrl(Uri.parse(url), mode: LaunchMode.platformDefault);
-                    },
-                    icon: const Icon(Icons.chat),
-                    label: const Text('WhatsApp'),
-                  ),
-                ],
-              );
-            },
-            loading: () => Text(l10n.loading),
-            error: (error, stackTrace) => const Text('İletişim bilgileri yüklenemedi.'),
-          ),
-        ],
+                    FilledButton.icon(
+                      style: FilledButton.styleFrom(
+                        backgroundColor: whatsappGreen,
+                        foregroundColor: Colors.white,
+                      ),
+                      onPressed: () {
+                        final url = buildWhatsAppUrl(
+                          phoneE164Digits: phone,
+                          message: 'Merhaba, bilgi almak istiyorum.',
+                        );
+                        launchUrl(Uri.parse(url), mode: LaunchMode.platformDefault);
+                      },
+                      icon: const Icon(Icons.chat),
+                      label: const Text('WhatsApp'),
+                    ),
+                  ],
+                );
+              },
+              loading: () => Text(l10n.loading),
+              error: (error, stackTrace) => const Text('İletişim bilgileri yüklenemedi.'),
+            ),
+            const SizedBox(height: 28),
+            const SiteFooter(),
+          ],
+        ),
       ),
     );
   }

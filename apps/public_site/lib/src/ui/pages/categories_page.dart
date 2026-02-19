@@ -7,6 +7,7 @@ import 'package:public_site/l10n/app_localizations.dart';
 import '../../data/providers.dart';
 import '../widgets/category_card.dart';
 import '../widgets/section_header.dart';
+import '../widgets/site_footer.dart';
 
 typedef L10n = AppLocalizations;
 
@@ -36,18 +37,24 @@ class CategoriesPage extends ConsumerWidget {
                     final cardWidth = (width - gap * (columns - 1)) / columns;
 
                     return SingleChildScrollView(
-                      child: Wrap(
-                        spacing: gap,
-                        runSpacing: gap,
+                      child: Column(
                         children: [
-                          for (final cat in cats)
-                            SizedBox(
-                              width: cardWidth,
-                              child: CategoryCard(
-                                title: cat.name,
-                                onTap: () => context.go('/k/${cat.slug}'),
-                              ),
-                            ),
+                          Wrap(
+                            spacing: gap,
+                            runSpacing: gap,
+                            children: [
+                              for (final cat in cats)
+                                SizedBox(
+                                  width: cardWidth,
+                                  child: CategoryCard(
+                                    title: cat.name,
+                                    onTap: () => context.go('/k/${cat.slug}'),
+                                  ),
+                                ),
+                            ],
+                          ),
+                          const SizedBox(height: 28),
+                          const SiteFooter(),
                         ],
                       ),
                     );

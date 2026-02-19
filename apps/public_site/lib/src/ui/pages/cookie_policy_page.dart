@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:public_site/l10n/app_localizations.dart';
+import '../widgets/site_footer.dart';
 
 typedef L10n = AppLocalizations;
 
@@ -49,6 +50,8 @@ class CookiePolicyPage extends StatelessWidget {
                 body:
                     'Bu politika zaman zaman güncellenebilir. Güncellemeler sitede yayınlandığı tarihten itibaren geçerli olur.\n\nYürürlük tarihi: 17.02.2026',
               ),
+              const SizedBox(height: 28),
+              const SiteFooter(),
             ],
           ),
         ),

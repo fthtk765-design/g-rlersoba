@@ -8,6 +8,7 @@ import '../../data/providers.dart';
 import '../widgets/category_card.dart';
 import '../widgets/product_card.dart';
 import '../widgets/section_header.dart';
+import '../widgets/site_footer.dart';
 
 typedef L10n = AppLocalizations;
 
@@ -113,6 +114,8 @@ class HomePage extends ConsumerWidget {
                     ),
                   ],
                 ),
+                const SizedBox(height: 32),
+                const SiteFooter(),
               ],
             ),
           ),
