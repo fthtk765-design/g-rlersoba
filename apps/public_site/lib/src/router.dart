@@ -13,6 +13,13 @@ import 'ui/shell/public_shell.dart';
 GoRouter buildPublicRouter() {
   return GoRouter(
     initialLocation: '/',
+    redirect: (context, state) {
+      final productSlug = state.uri.queryParameters['u'];
+      if (state.uri.path == '/' && productSlug != null && productSlug.isNotEmpty) {
+        return '/u/$productSlug';
+      }
+      return null;
+    },
     errorBuilder: (context, state) => const NotFoundPage(),
     routes: [
       ShellRoute(

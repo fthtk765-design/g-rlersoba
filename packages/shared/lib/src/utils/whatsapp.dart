@@ -21,7 +21,9 @@ String buildProductWhatsAppMessage({
   String? optionalCity,
   String? optionalNote,
 }) {
-  final link = config.publicSiteBaseUri.replace(path: '/').toString();
+  final link = config.publicSiteBaseUri
+      .replace(path: '/', queryParameters: {'u': productSlugOrCode})
+      .toString();
 
   final cityLine = (optionalCity ?? '').trim().isEmpty ? '' : '\nŞehir/İlçe: ${optionalCity!.trim()}';
   final noteLine = (optionalNote ?? '').trim().isEmpty ? '' : '\nNot: ${optionalNote!.trim()}';
