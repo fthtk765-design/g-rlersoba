@@ -13,7 +13,7 @@ class AppConfig {
     final base = Uri.parse(
       const String.fromEnvironment(
         'PUBLIC_SITE_BASE_URL',
-        defaultValue: 'https://gurlersoba.com',
+        defaultValue: 'https://xn--grlersoba-q9a.com',
       ),
     );
 
