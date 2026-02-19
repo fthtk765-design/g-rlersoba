@@ -14,9 +14,12 @@ GoRouter buildPublicRouter() {
   return GoRouter(
     initialLocation: '/',
     redirect: (context, state) {
-      final productSlug = state.uri.queryParameters['u'];
-      if (state.uri.path == '/' && productSlug != null && productSlug.isNotEmpty) {
-        return '/u/$productSlug';
+      final productSlug = state.uri.queryParameters['u']?.trim();
+      final path = state.uri.path;
+      final isRootLikePath = path.isEmpty || path == '/' || path == '/index.html';
+
+      if (isRootLikePath && productSlug != null && productSlug.isNotEmpty) {
+        return '/u/${Uri.encodeComponent(productSlug)}';
       }
       return null;
     },
