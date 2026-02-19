@@ -33,6 +33,8 @@ class HomePage extends ConsumerWidget {
               children: [
                 SectionHeader(title: l10n.sectionCategories),
                 const SizedBox(height: 20),
+                const _CatalogSection(),
+                const SizedBox(height: 40),
                 categoriesAsync.when(
                   data: (cats) {
                     return LayoutBuilder(
@@ -191,6 +193,47 @@ class _Hero extends StatelessWidget {
           ),
         ),
       ),
+    );
+  }
+}
+
+class _CatalogSection extends StatelessWidget {
+  const _CatalogSection();
+
+  static const _images = [
+    'assets/catalog/katalog-01.png',
+    'assets/catalog/katalog-02.png',
+    'assets/catalog/katalog-03.png',
+    'assets/catalog/katalog-04.png',
+  ];
+
+  @override
+  Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Text('Katalog', style: theme.textTheme.headlineSmall),
+        const SizedBox(height: 8),
+        Text(
+          'Ürün kataloğumuzdan öne çıkan sayfalar',
+          style: theme.textTheme.bodyMedium,
+        ),
+        const SizedBox(height: 16),
+        for (final imagePath in _images) ...[
+          ClipRRect(
+            borderRadius: BorderRadius.circular(12),
+            child: Image.asset(
+              imagePath,
+              width: double.infinity,
+              fit: BoxFit.cover,
+              filterQuality: FilterQuality.high,
+            ),
+          ),
+          const SizedBox(height: 16),
+        ],
+      ],
     );
   }
 }
