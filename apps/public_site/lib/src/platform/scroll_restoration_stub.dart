@@ -1,3 +1,0 @@
-void disableBrowserScrollRestoration() {}
-
-void browserScrollToTop() {}
