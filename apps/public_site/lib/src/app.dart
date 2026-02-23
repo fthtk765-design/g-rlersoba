@@ -7,6 +7,7 @@ const _routeAbout      = '/hakkimizda';
 const _routeContact    = '/iletisim';
 const _routeCategories = '/kategoriler';
 const _routeSomine     = '/kategoriler/somine';
+const _routeAksesuar   = '/kategoriler/aksesuar';
 const _routePrivacy    = '/gizlilik';
 const _routeCookie     = '/cerez';
 const _routeKvkk       = '/kvkk';
@@ -29,6 +30,7 @@ class PublicApp extends StatelessWidget {
           _routeContact:    const ContactPage(),
           _routeCategories: const CategoriesPage(),
           _routeSomine:     const SominePage(),
+          _routeAksesuar:   const AksesuarPage(),
           _routePrivacy:    const PrivacyPage(),
           _routeCookie:     const CookiePage(),
           _routeKvkk:       const KvkkPage(),
@@ -230,6 +232,13 @@ class HomePage extends StatelessWidget {
                         color: const Color(0xFF374151),
                         route: null,
                       ),
+                      const SizedBox(width: 10),
+                      _CatTab(
+                        icon: Icons.build_rounded,
+                        label: 'Aksesuar',
+                        color: const Color(0xFF059669),
+                        route: _routeAksesuar,
+                      ),
                     ],
                   ),
                 ),
@@ -344,6 +353,12 @@ class _CategoryGrid extends StatelessWidget {
           label: 'Mangal',
           color: const Color(0xFF374151),
           route: null,
+        ),
+        _CatTab(
+          icon: Icons.build_rounded,
+          label: 'Aksesuar',
+          color: const Color(0xFF059669),
+          route: _routeAksesuar,
         ),
       ],
     );
@@ -565,6 +580,11 @@ const _somineProducts = [
     _ProductData(
       title: 'TDS036H Şömine',
       imagePath: 'assets/somine/somine-01.png',
+      highlights: [
+        'Seramik Ön Cam',
+        'Döküm Demir Gövde',
+        'Çift Hava Akış Sistemi',
+      ],
       specs: [
         _SpecItem(icon: Icons.straighten,        label: 'En',           value: '42 cm'),
         _SpecItem(icon: Icons.height,            label: 'Yükseklik',    value: '72 cm'),
@@ -575,90 +595,265 @@ const _somineProducts = [
       ],
     ),
     _ProductData(
-      title: 'Şömine Model 2',
+      title: 'TDS028B Vesta Fırınlı Şömine',
       imagePath: 'assets/somine/somine-02.png',
+      highlights: [
+        'Seramik Camlı Fırın',
+        'Fırın Bölmeli',
+        'Döküm Demir Gövde',
+      ],
       specs: [
-        _SpecItem(icon: Icons.straighten,        label: 'En',           value: '—'),
-        _SpecItem(icon: Icons.height,            label: 'Yükseklik',    value: '—'),
-        _SpecItem(icon: Icons.circle_outlined,   label: 'Baca Çapı',    value: '—'),
-        _SpecItem(icon: Icons.local_fire_department, label: 'Ocak Hac.', value: '—'),
-        _SpecItem(icon: Icons.bolt,              label: 'Nominal Güç',  value: '— kW'),
-        _SpecItem(icon: Icons.monitor_weight,    label: 'Ağırlık',      value: '— kg'),
+        _SpecItem(icon: Icons.straighten,            label: 'En',          value: '51 cm'),
+        _SpecItem(icon: Icons.swap_horiz,            label: 'Genişlik',    value: '77 cm'),
+        _SpecItem(icon: Icons.height,                label: 'Yükseklik',   value: '132 cm'),
+        _SpecItem(icon: Icons.monitor_weight,        label: 'Ağırlık',     value: '245 kg'),
+        _SpecItem(icon: Icons.kitchen,               label: 'Fırın',       value: 'Seramik Camlı'),
+        _SpecItem(icon: Icons.category,              label: 'Malzeme',     value: 'Döküm Demir'),
       ],
     ),
     _ProductData(
-      title: 'Şömine Model 3',
+      title: 'TDS028 Vesta Şömine',
       imagePath: 'assets/somine/somine-03.png',
+      highlights: [
+        'Geniş Yanma Haznesi',
+        'Döküm Demir Gövde',
+        'Ön Seramik Cam',
+      ],
       specs: [
-        _SpecItem(icon: Icons.straighten,        label: 'En',           value: '—'),
-        _SpecItem(icon: Icons.height,            label: 'Yükseklik',    value: '—'),
-        _SpecItem(icon: Icons.circle_outlined,   label: 'Baca Çapı',    value: '—'),
-        _SpecItem(icon: Icons.local_fire_department, label: 'Ocak Hac.', value: '—'),
-        _SpecItem(icon: Icons.bolt,              label: 'Nominal Güç',  value: '— kW'),
-        _SpecItem(icon: Icons.monitor_weight,    label: 'Ağırlık',      value: '— kg'),
+        _SpecItem(icon: Icons.straighten,            label: 'En',           value: '52 cm'),
+        _SpecItem(icon: Icons.swap_horiz,            label: 'Genişlik',     value: '74 cm'),
+        _SpecItem(icon: Icons.height,                label: 'Yükseklik',    value: '77 cm'),
+        _SpecItem(icon: Icons.circle_outlined,       label: 'Baca Çapı',    value: '13 cm'),
+        _SpecItem(icon: Icons.local_fire_department, label: 'Yanma Hac.',   value: '65 cm³'),
+        _SpecItem(icon: Icons.bolt,                  label: 'Nominal Güç',  value: '13 kW'),
       ],
     ),
     _ProductData(
-      title: 'Şömine Model 4',
+      title: 'TDS003 Mercan Kuzine',
       imagePath: 'assets/somine/somine-04.png',
+      highlights: [
+        'Ocak Üstü Pişirme',
+        'Döküm Demir',
+        'Geniş Üst Yüzey',
+      ],
       specs: [
-        _SpecItem(icon: Icons.straighten,        label: 'En',           value: '—'),
-        _SpecItem(icon: Icons.height,            label: 'Yükseklik',    value: '—'),
-        _SpecItem(icon: Icons.circle_outlined,   label: 'Baca Çapı',    value: '—'),
-        _SpecItem(icon: Icons.local_fire_department, label: 'Ocak Hac.', value: '—'),
-        _SpecItem(icon: Icons.bolt,              label: 'Nominal Güç',  value: '— kW'),
-        _SpecItem(icon: Icons.monitor_weight,    label: 'Ağırlık',      value: '— kg'),
+        _SpecItem(icon: Icons.straighten,            label: 'En',          value: '57 cm'),
+        _SpecItem(icon: Icons.swap_horiz,            label: 'Boy',         value: '84 cm'),
+        _SpecItem(icon: Icons.height,                label: 'Yükseklik',   value: '73 cm'),
+        _SpecItem(icon: Icons.circle_outlined,       label: 'Baca Çapı',   value: '13 cm'),
+        _SpecItem(icon: Icons.bolt,                  label: 'Nominal Güç', value: '13 kW'),
+        _SpecItem(icon: Icons.monitor_weight,        label: 'Ağırlık',     value: '110 kg'),
       ],
     ),
     _ProductData(
-      title: 'Şömine Model 5',
+      title: 'TDS056 Damla Kapalı Şömine',
       imagePath: 'assets/somine/somine-05.png',
+      highlights: [
+        'Kapalı Ön Kapak',
+        'Kompakt Tasarım',
+        'Döküm Demir Gövde',
+      ],
       specs: [
-        _SpecItem(icon: Icons.straighten,        label: 'En',           value: '—'),
-        _SpecItem(icon: Icons.height,            label: 'Yükseklik',    value: '—'),
-        _SpecItem(icon: Icons.circle_outlined,   label: 'Baca Çapı',    value: '—'),
-        _SpecItem(icon: Icons.local_fire_department, label: 'Ocak Hac.', value: '—'),
-        _SpecItem(icon: Icons.bolt,              label: 'Nominal Güç',  value: '— kW'),
-        _SpecItem(icon: Icons.monitor_weight,    label: 'Ağırlık',      value: '— kg'),
+        _SpecItem(icon: Icons.straighten,            label: 'En',          value: '43 cm'),
+        _SpecItem(icon: Icons.swap_horiz,            label: 'Genişlik',    value: '52 cm'),
+        _SpecItem(icon: Icons.height,                label: 'Yükseklik',   value: '67 cm'),
+        _SpecItem(icon: Icons.circle_outlined,       label: 'Baca Çapı',   value: '13 cm'),
+        _SpecItem(icon: Icons.bolt,                  label: 'Nominal Güç', value: '12 kW'),
+        _SpecItem(icon: Icons.monitor_weight,        label: 'Ağırlık',     value: '75 kg'),
       ],
     ),
     _ProductData(
-      title: 'Şömine Model 6',
+      title: 'TDS009 Yakut Fırınlı Şömine',
       imagePath: 'assets/somine/somine-06.png',
+      highlights: [
+        'Seramik Camlı Fırın',
+        'Büyük Hacimli Yapı',
+        'Döküm Demir',
+      ],
       specs: [
-        _SpecItem(icon: Icons.straighten,        label: 'En',           value: '—'),
-        _SpecItem(icon: Icons.height,            label: 'Yükseklik',    value: '—'),
-        _SpecItem(icon: Icons.circle_outlined,   label: 'Baca Çapı',    value: '—'),
-        _SpecItem(icon: Icons.local_fire_department, label: 'Ocak Hac.', value: '—'),
-        _SpecItem(icon: Icons.bolt,              label: 'Nominal Güç',  value: '— kW'),
-        _SpecItem(icon: Icons.monitor_weight,    label: 'Ağırlık',      value: '— kg'),
+        _SpecItem(icon: Icons.straighten,            label: 'En',          value: '70 cm'),
+        _SpecItem(icon: Icons.swap_horiz,            label: 'Genişlik',    value: '60 cm'),
+        _SpecItem(icon: Icons.height,                label: 'Yükseklik',   value: '89 cm'),
+        _SpecItem(icon: Icons.circle_outlined,       label: 'Baca Çapı',   value: '13 cm'),
+        _SpecItem(icon: Icons.bolt,                  label: 'Nominal Güç', value: '13 kW'),
+        _SpecItem(icon: Icons.monitor_weight,        label: 'Ağırlık',     value: '167 kg'),
       ],
     ),
     _ProductData(
-      title: 'Şömine Model 7',
+      title: 'TDS059C Damla Fırınlı Şömine',
       imagePath: 'assets/somine/somine-07.png',
+      highlights: [
+        'Fırın Bölmeli Damla',
+        'Seramik Cam',
+        'Döküm Demir',
+      ],
       specs: [
-        _SpecItem(icon: Icons.straighten,        label: 'En',           value: '—'),
-        _SpecItem(icon: Icons.height,            label: 'Yükseklik',    value: '—'),
-        _SpecItem(icon: Icons.circle_outlined,   label: 'Baca Çapı',    value: '—'),
-        _SpecItem(icon: Icons.local_fire_department, label: 'Ocak Hac.', value: '—'),
-        _SpecItem(icon: Icons.bolt,              label: 'Nominal Güç',  value: '— kW'),
-        _SpecItem(icon: Icons.monitor_weight,    label: 'Ağırlık',      value: '— kg'),
+        _SpecItem(icon: Icons.straighten,            label: 'En',          value: '43 cm'),
+        _SpecItem(icon: Icons.swap_horiz,            label: 'Genişlik',    value: '52 cm'),
+        _SpecItem(icon: Icons.height,                label: 'Yükseklik',   value: '110 cm'),
+        _SpecItem(icon: Icons.circle_outlined,       label: 'Baca Çapı',   value: '13 cm'),
+        _SpecItem(icon: Icons.bolt,                  label: 'Nominal Güç', value: '4,3 kW'),
+        _SpecItem(icon: Icons.monitor_weight,        label: 'Ağırlık',     value: '115 kg'),
       ],
     ),
     _ProductData(
-      title: 'Şömine Model 8',
+      title: 'TDS004 Safir Yan Camlı Şömine',
       imagePath: 'assets/somine/somine-08.png',
+      highlights: [
+        'Üç Taraflı Seramik Camlı',
+        'Çift Hava Akış Sistemi',
+        'İçten Küllüklü Model',
+        'Çek-Dök Izgara',
+      ],
       specs: [
-        _SpecItem(icon: Icons.straighten,        label: 'En',           value: '—'),
-        _SpecItem(icon: Icons.height,            label: 'Yükseklik',    value: '—'),
-        _SpecItem(icon: Icons.circle_outlined,   label: 'Baca Çapı',    value: '—'),
-        _SpecItem(icon: Icons.local_fire_department, label: 'Ocak Hac.', value: '—'),
-        _SpecItem(icon: Icons.bolt,              label: 'Nominal Güç',  value: '— kW'),
-        _SpecItem(icon: Icons.monitor_weight,    label: 'Ağırlık',      value: '— kg'),
+        _SpecItem(icon: Icons.straighten,            label: 'En',          value: '51 cm'),
+        _SpecItem(icon: Icons.swap_horiz,            label: 'Genişlik',    value: '50 cm'),
+        _SpecItem(icon: Icons.height,                label: 'Yükseklik',   value: '84 cm'),
+        _SpecItem(icon: Icons.circle_outlined,       label: 'Baca Çapı',   value: '13 cm'),
+        _SpecItem(icon: Icons.bolt,                  label: 'Nominal Güç', value: '13 kW'),
+        _SpecItem(icon: Icons.monitor_weight,        label: 'Ağırlık',     value: '115 kg'),
+      ],
+    ),
+    _ProductData(
+      title: 'TDS060H Dik Fırınlı Yan Camlı Şömine',
+      imagePath: 'assets/somine/somine-09.png',
+      highlights: [
+        'Üç Hava Akış Sistemi',
+        'Yanlar Seramik Camlı',
+        'Altan Küllük',
+      ],
+      specs: [
+        _SpecItem(icon: Icons.straighten,            label: 'En',          value: '42 cm'),
+        _SpecItem(icon: Icons.swap_horiz,            label: 'Genişlik',    value: '72 cm'),
+        _SpecItem(icon: Icons.height,                label: 'Yükseklik',   value: '104 cm'),
+        _SpecItem(icon: Icons.circle_outlined,       label: 'Baca Çapı',   value: '13 cm'),
+        _SpecItem(icon: Icons.bolt,                  label: 'Nominal Güç', value: '13 kW'),
+        _SpecItem(icon: Icons.monitor_weight,        label: 'Ağırlık',     value: '158 kg'),
+      ],
+    ),
+    _ProductData(
+      title: 'TDS060G Dik Fırınlı Yan Kapaklı Şömine',
+      imagePath: 'assets/somine/somine-11.png',
+      highlights: [
+        'Üç Hava Akış Sistemi',
+        'Yanlar Seramik Camlı',
+        'Kapalı Alttan Küllük',
+      ],
+      specs: [
+        _SpecItem(icon: Icons.straighten,            label: 'En',           value: '42 cm'),
+        _SpecItem(icon: Icons.swap_horiz,            label: 'Genişlik',     value: '72 cm'),
+        _SpecItem(icon: Icons.height,                label: 'Yükseklik',    value: '104 cm'),
+        _SpecItem(icon: Icons.circle_outlined,       label: 'Baca Çapı',    value: '13 cm'),
+        _SpecItem(icon: Icons.bolt,                  label: 'Nominal Güç',  value: '13 kW'),
+        _SpecItem(icon: Icons.monitor_weight,        label: 'Ağırlık',      value: '146 kg'),
+      ],
+    ),
+    _ProductData(
+      title: 'TDS029B Alttan Çekmeceli Yatay Kuzine',
+      imagePath: 'assets/somine/somine-10.png',
+      highlights: [
+        'Seramik Camlı Fırın',
+        'Camlı Ön Pencere & Fırın',
+      ],
+      specs: [
+        _SpecItem(icon: Icons.straighten,            label: 'En',           value: '52 cm'),
+        _SpecItem(icon: Icons.swap_horiz,            label: 'Genişlik',     value: '89 cm'),
+        _SpecItem(icon: Icons.height,                label: 'Yükseklik',    value: '75 cm'),
+        _SpecItem(icon: Icons.circle_outlined,       label: 'Baca Çapı',    value: '13 cm'),
+        _SpecItem(icon: Icons.bolt,                  label: 'Nominal Güç',  value: '12 kW'),
+        _SpecItem(icon: Icons.monitor_weight,        label: 'Ağırlık',      value: '152 kg'),
+      ],
+    ),
+    _ProductData(
+      title: 'TDS057 İnci Kapalı Şömine',
+      imagePath: 'assets/somine/somine-12.png',
+      highlights: [
+        'Üç Hava Akış Sistemi',
+        'Yanlar Seramik Camlı',
+        'Kompakt Kapalı Tasarım',
+      ],
+      specs: [
+        _SpecItem(icon: Icons.straighten,            label: 'En',           value: '43 cm'),
+        _SpecItem(icon: Icons.swap_horiz,            label: 'Genişlik',     value: '52 cm'),
+        _SpecItem(icon: Icons.height,                label: 'Yükseklik',    value: '67 cm'),
+        _SpecItem(icon: Icons.circle_outlined,       label: 'Baca Çapı',    value: '13 cm'),
+        _SpecItem(icon: Icons.bolt,                  label: 'Nominal Güç',  value: '10 kW'),
+        _SpecItem(icon: Icons.monitor_weight,        label: 'Ağırlık',      value: '75 kg'),
       ],
     ),
 ];
+
+// ─── Aksesuar Ürün Listesi ────────────────────────────────────────────────────
+const _aksesuarProducts = [
+  _ProductData(
+    title: 'TDS046A Alt Tabla – İstanbul Boğazı (Büyük)',
+    imagePath: 'assets/aksesuar/aksesuar-01.png',
+    specs: [
+      _SpecItem(icon: Icons.straighten,         label: 'En',       value: '63 cm'),
+      _SpecItem(icon: Icons.swap_horiz,         label: 'Boy',      value: '90 cm'),
+      _SpecItem(icon: Icons.height,             label: 'Yükseklik',value: '13 cm'),
+      _SpecItem(icon: Icons.category,           label: 'Model',    value: 'İstanbul Boğazı'),
+      _SpecItem(icon: Icons.straighten,         label: 'Boyut',    value: 'Büyük'),
+      _SpecItem(icon: Icons.inventory_2,        label: 'Malzeme',  value: 'Döküm Demir'),
+    ],
+  ),
+];
+
+// ─── Aksesuar Sayfası ─────────────────────────────────────────────────────────
+class AksesuarPage extends StatelessWidget {
+  const AksesuarPage({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+    return _PageShell(
+      activeRoute: _routeAksesuar,
+      child: Padding(
+        padding: const EdgeInsets.fromLTRB(16, 36, 16, 48),
+        child: Center(
+          child: ConstrainedBox(
+            constraints: const BoxConstraints(maxWidth: 1200),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                GestureDetector(
+                  onTap: () => Navigator.pushReplacementNamed(context, _routeCategories),
+                  child: Row(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      Icon(Icons.chevron_left_rounded, size: 18, color: theme.colorScheme.primary),
+                      Text('Kategoriler', style: TextStyle(color: theme.colorScheme.primary, fontSize: 13.5, fontWeight: FontWeight.w600)),
+                    ],
+                  ),
+                ),
+                const SizedBox(height: 18),
+                Text('Aksesuar & Parçalar', style: theme.textTheme.headlineSmall?.copyWith(fontWeight: FontWeight.w800, letterSpacing: -0.3)),
+                const SizedBox(height: 6),
+                Text('Şömine ve soba aksesuarları, döküm parçalar.', style: theme.textTheme.bodyMedium?.copyWith(color: const Color(0xFF6B7280))),
+                const SizedBox(height: 28),
+                LayoutBuilder(
+                  builder: (context, constraints) {
+                    final w = constraints.maxWidth;
+                    final cols = w >= 900 ? 3 : (w >= 560 ? 2 : 1);
+                    final gap = 16.0;
+                    final cardW = (w - gap * (cols - 1)) / cols;
+                    return Wrap(
+                      spacing: gap,
+                      runSpacing: gap,
+                      children: _aksesuarProducts
+                          .map((p) => SizedBox(width: cardW, child: _ProductCard(product: p)))
+                          .toList(),
+                    );
+                  },
+                ),
+              ],
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+}
 
 // ─── Şömine Sayfası ───────────────────────────────────────────────────────────
 class SominePage extends StatelessWidget {
@@ -791,10 +986,12 @@ class _ProductData {
   final String title;
   final String? imagePath;
   final List<_SpecItem> specs;
+  final List<String> highlights;
   const _ProductData({
     required this.title,
     this.imagePath,
     this.specs = const [],
+    this.highlights = const [],
   });
 }
 
@@ -901,6 +1098,38 @@ class _ProductCardState extends State<_ProductCard> {
                         ),
                       ),
                     ),
+
+                    // Öne çıkan özellik rozetleri
+                    if (p.highlights.isNotEmpty)
+                      Padding(
+                        padding: const EdgeInsets.fromLTRB(12, 5, 12, 0),
+                        child: Wrap(
+                          spacing: 5,
+                          runSpacing: 4,
+                          children: p.highlights
+                              .map(
+                                (h) => Container(
+                                  padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 3),
+                                  decoration: BoxDecoration(
+                                    gradient: const LinearGradient(
+                                      colors: [Color(0xFFB45309), Color(0xFFD97706)],
+                                    ),
+                                    borderRadius: BorderRadius.circular(20),
+                                  ),
+                                  child: Text(
+                                    h,
+                                    style: const TextStyle(
+                                      fontSize: 9.5,
+                                      fontWeight: FontWeight.w700,
+                                      color: Colors.white,
+                                      letterSpacing: 0.3,
+                                    ),
+                                  ),
+                                ),
+                              )
+                              .toList(),
+                        ),
+                      ),
 
                     // Altın ince çizgi ayraç
                     Container(
